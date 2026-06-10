@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 
-const SSO_URL = "https://app.kgnpos.com/api/auth/sso";
+const SSO_URL = "https://posapi.kgnpos.com/api/auth/sso";
 
 export default function LoginPage() {
   const [form, setForm] = useState({ email: "", password: "" });

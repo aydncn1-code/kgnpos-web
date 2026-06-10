@@ -35,7 +35,7 @@ export default function RegisterPage() {
 
     setLoading(true);
     try {
-      const res = await fetch("https://app.kgnpos.com/api/auth/register", {
+      const res = await fetch("https://api.kgnpos.com/api/auth/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
