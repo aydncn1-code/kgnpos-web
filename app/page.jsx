@@ -7,6 +7,7 @@ const navLinks = [
   { label: "Modüller",    href: "#moduller" },
   { label: "Hakkımızda",  href: "#hakkimizda" },
   { label: "Teknoloji",   href: "#teknoloji" },
+  { label: "Fiyatlar",    href: "#fiyatlar" },
 ];
 
 const stats = [
@@ -56,6 +57,58 @@ const modules = [
   { emoji: "👥", name: "CRM & Müşteri",      desc: "Müşteri kartı, sadakat puanı ve kampanya yönetimi." },
   { emoji: "🖨️", name: "Yazarkasa (ÖKC)",   desc: "Tüm ÖKC markaları ile uyumlu, sertifikalı." },
   { emoji: "📱", name: "Mobil Uygulama",     desc: "iOS ve Android ile işletmenizi her yerden izleyin." },
+];
+
+const plans = [
+  {
+    name: "Başlangıç",
+    price: "₺499",
+    period: "/ay",
+    desc: "Küçük işletmeler için ideal başlangıç paketi.",
+    features: [
+      "1 Kasa",
+      "Temel stok yönetimi",
+      "Günlük & haftalık raporlar",
+      "e-Fatura entegrasyonu",
+      "E-posta destek",
+    ],
+    cta: "Ücretsiz Dene",
+    href: "/register",
+    highlight: false,
+  },
+  {
+    name: "İşletme",
+    price: "₺999",
+    period: "/ay",
+    desc: "Büyüyen işletmeler için tüm özellikler.",
+    features: [
+      "5 Kasa",
+      "Gelişmiş stok & tedarikçi yönetimi",
+      "Anlık raporlar & analizler",
+      "Personel yönetimi & vardiya",
+      "CRM & sadakat sistemi",
+      "7/24 telefon destek",
+    ],
+    cta: "Hemen Başla",
+    href: "/register",
+    highlight: true,
+  },
+  {
+    name: "Kurumsal",
+    price: "Özel",
+    period: "",
+    desc: "Zincir mağaza ve kurumsal çözümler.",
+    features: [
+      "Sınırsız kasa",
+      "Çoklu şube yönetimi",
+      "API & muhasebe entegrasyonu",
+      "Özel raporlama & dashboard",
+      "SLA garantili öncelikli destek",
+    ],
+    cta: "Teklif Al",
+    href: "/register",
+    highlight: false,
+  },
 ];
 
 const techs = [
@@ -341,6 +394,83 @@ export default function LandingPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ── Fiyatlar ───────────────────────────────────────────────────────── */}
+      <section id="fiyatlar" className="py-24 bg-[#FFF6EE]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#E85D04]">Fiyatlar</span>
+            <h2 className="mt-2 text-3xl md:text-4xl font-extrabold text-gray-900">
+              Şeffaf ve Esnek Fiyatlandırma
+            </h2>
+            <p className="mt-4 text-gray-500 max-w-xl mx-auto">
+              Gizli ücret yok. İşletmenizin büyüklüğüne göre plan seçin, istediğiniz zaman değiştirin.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+            {plans.map((plan) => (
+              <div
+                key={plan.name}
+                className={`relative rounded-2xl p-8 transition-all ${
+                  plan.highlight
+                    ? "bg-[#E85D04] text-white shadow-2xl shadow-orange-200 scale-105"
+                    : "bg-white border border-orange-100 hover:shadow-lg"
+                }`}
+              >
+                {plan.highlight && (
+                  <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-amber-400 text-amber-900 text-xs font-bold px-4 py-1 rounded-full whitespace-nowrap">
+                    En Popüler
+                  </span>
+                )}
+
+                <p className={`text-xs font-bold uppercase tracking-widest mb-1 ${plan.highlight ? "text-orange-200" : "text-[#E85D04]"}`}>
+                  {plan.name}
+                </p>
+                <div className="flex items-end gap-1 mb-2">
+                  <span className={`text-4xl font-extrabold ${plan.highlight ? "text-white" : "text-gray-900"}`}>
+                    {plan.price}
+                  </span>
+                  {plan.period && (
+                    <span className={`text-sm mb-1 ${plan.highlight ? "text-orange-200" : "text-gray-400"}`}>
+                      {plan.period}
+                    </span>
+                  )}
+                </div>
+                <p className={`text-sm mb-6 ${plan.highlight ? "text-orange-100" : "text-gray-500"}`}>
+                  {plan.desc}
+                </p>
+
+                <ul className="space-y-3 mb-8">
+                  {plan.features.map((f) => (
+                    <li key={f} className="flex items-start gap-2.5 text-sm">
+                      <svg className={`w-4 h-4 mt-0.5 flex-shrink-0 ${plan.highlight ? "text-orange-200" : "text-[#E85D04]"}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span className={plan.highlight ? "text-orange-50" : "text-gray-600"}>{f}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <Link
+                  href={plan.href}
+                  className={`block text-center py-3 rounded-xl font-semibold text-sm transition-colors ${
+                    plan.highlight
+                      ? "bg-white text-[#E85D04] hover:bg-orange-50"
+                      : "bg-[#E85D04] text-white hover:bg-[#C44D00]"
+                  }`}
+                >
+                  {plan.cta}
+                </Link>
+              </div>
+            ))}
+          </div>
+
+          <p className="text-center text-xs text-gray-400 mt-10">
+            Tüm planlar 14 günlük ücretsiz deneme içerir · Kredi kartı gerekmez · İstediğiniz zaman iptal
+          </p>
         </div>
       </section>
 
