@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 
-const SSO_URL = "https://posapi.kgnpos.com/api/auth/sso";
+const LOGIN_URL = "https://api.kgnpos.com/api/auth/login";
 
 export default function LoginPage() {
   const [form, setForm] = useState({ email: "", password: "" });
@@ -23,25 +23,21 @@ export default function LoginPage() {
     }
     setLoading(true);
     try {
-      const res = await fetch(SSO_URL, {
+      const res = await fetch(LOGIN_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: form.email, password: form.password }),
       });
 
-      if (res.redirected) {
-        window.location.href = res.url;
-        return;
-      }
+      const data = await res.json().catch(() => ({}));
 
       if (!res.ok) {
-        const data = await res.json().catch(() => ({}));
-        setError(data.message || "E-posta veya şifre hatalı.");
+        setError(data.error || "E-posta veya şifre hatalı.");
         return;
       }
 
-      const data = await res.json();
-      window.location.href = data.redirect ?? "https://app.kgnpos.com";
+      localStorage.setItem("kgnpos_token", data.token);
+      window.location.href = `https://posapi.kgnpos.com/api/auth/sso?token=${data.token}`;
     } catch {
       setError("Sunucuya bağlanılamadı. Lütfen tekrar deneyin.");
     } finally {
