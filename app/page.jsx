@@ -470,35 +470,33 @@ export default async function LandingPage() {
 
       {/* ── Footer ─────────────────────────────────────────────────────────── */}
       <footer className="bg-gray-950 text-gray-500 py-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <div className="flex items-center">
-              <div style={{position:'relative',display:'inline-block',paddingTop:10}}>
-                <svg style={{position:'absolute',top:0,right:-5,display:'block'}} width="18" height="10" viewBox="1 4 21 16" fill="none" stroke="#E85D04" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/>
-                </svg>
-                <div style={{display:'flex',alignItems:'baseline'}}>
-                  <span style={{fontSize:16,fontWeight:700,color:'#fff',letterSpacing:'-0.5px',lineHeight:1}}>KGN</span>
-                  <span style={{fontSize:16,fontWeight:700,color:'#E85D04',letterSpacing:'-0.5px',lineHeight:1}}>POS</span>
-                </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center gap-6">
+          <div className="flex items-center">
+            <div style={{position:'relative',display:'inline-block',paddingTop:10}}>
+              <svg style={{position:'absolute',top:0,right:-5,display:'block'}} width="18" height="10" viewBox="1 4 21 16" fill="none" stroke="#E85D04" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/>
+              </svg>
+              <div style={{display:'flex',alignItems:'baseline'}}>
+                <span style={{fontSize:16,fontWeight:700,color:'#fff',letterSpacing:'-0.5px',lineHeight:1}}>KGN</span>
+                <span style={{fontSize:16,fontWeight:700,color:'#E85D04',letterSpacing:'-0.5px',lineHeight:1}}>POS</span>
               </div>
             </div>
-            <nav className="flex flex-wrap justify-center gap-6 text-sm">
-              {navLinks.map((l) => (
-                <a key={l.href} href={l.href} className="hover:text-white transition-colors">{l.label}</a>
-              ))}
-              <Link href="/login"             className="hover:text-white transition-colors">Giriş Yap</Link>
-              <Link href="/register"          className="hover:text-white transition-colors">Kayıt Ol</Link>
-              <Link href="/gizlilik"          className="hover:text-white transition-colors">Gizlilik</Link>
-              <Link href="/kullanim-sartlari" className="hover:text-white transition-colors">Kullanım Şartları</Link>
-            </nav>
-            <div className="flex flex-col items-end gap-1">
-              <a href={`tel:${(cmsContact.phone||'+905335430182').replace(/[\s-]/g,'')}`} className="text-xs hover:text-white transition-colors">📞 {cmsContact.phone || '+90 533 543 01 82'}</a>
-              <a href={`mailto:${cmsContact.email||'kurucu@kgnpos.com'}`} className="text-xs hover:text-white transition-colors">✉ {cmsContact.email || 'kurucu@kgnpos.com'}</a>
-              <a href={`https://instagram.com/${(cmsContact.instagram||'@kgnpos').replace('@','')}`} target="_blank" rel="noreferrer" className="text-xs hover:text-white transition-colors">📷 {cmsContact.instagram || '@kgnpos'}</a>
-              <p className="text-xs">© {new Date().getFullYear()} KGNPOS. Tüm hakları saklıdır.</p>
-            </div>
           </div>
+          <nav className="flex flex-wrap justify-center gap-6 text-sm">
+            {navLinks.map((l) => (
+              <a key={l.href} href={l.href} className="hover:text-white transition-colors">{l.label}</a>
+            ))}
+            <Link href="/login"             className="hover:text-white transition-colors">Giriş Yap</Link>
+            <Link href="/register"          className="hover:text-white transition-colors">Kayıt Ol</Link>
+            <Link href="/gizlilik"          className="hover:text-white transition-colors">Gizlilik</Link>
+            <Link href="/kullanim-sartlari" className="hover:text-white transition-colors">Kullanım Şartları</Link>
+          </nav>
+          <div className="flex flex-wrap justify-center gap-4 text-xs">
+            <a href={`tel:${(cmsContact.phone||'+905335430182').replace(/[\s-]/g,'')}`} className="hover:text-white transition-colors">📞 {cmsContact.phone || '+90 533 543 01 82'}</a>
+            <a href={`mailto:${cmsContact.email||'kurucu@kgnpos.com'}`} className="hover:text-white transition-colors">✉ {cmsContact.email || 'kurucu@kgnpos.com'}</a>
+            <a href={`https://instagram.com/${(cmsContact.instagram||'@kgnpos').replace('@','')}`} target="_blank" rel="noreferrer" className="hover:text-white transition-colors">📷 {cmsContact.instagram || '@kgnpos'}</a>
+          </div>
+          <p className="text-xs">© {new Date().getFullYear()} KGNPOS. Tüm hakları saklıdır.</p>
         </div>
       </footer>
 
