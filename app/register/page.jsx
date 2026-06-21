@@ -90,11 +90,16 @@ export default function RegisterPage() {
 
         {/* Logo */}
         <div className="flex justify-center mb-8">
-          <Link href="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-[#E85D04]">
-              <span className="text-white font-extrabold text-base">K</span>
+          <Link href="/" className="flex items-center">
+            <div style={{position:'relative',display:'inline-block',paddingTop:14}}>
+              <svg style={{position:'absolute',top:0,right:-7,display:'block'}} width="26" height="14" viewBox="1 4 21 16" fill="none" stroke="#E85D04" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/>
+              </svg>
+              <div style={{display:'flex',alignItems:'baseline',gap:0}}>
+                <span style={{fontSize:26,fontWeight:900,color:'#111827',letterSpacing:'-0.5px',lineHeight:1}}>KGN</span>
+                <span style={{fontSize:26,fontWeight:900,color:'#E85D04',letterSpacing:'-0.5px',lineHeight:1}}>POS</span>
+              </div>
             </div>
-            <span className="font-extrabold text-xl text-gray-900">KGNPOS</span>
           </Link>
         </div>
 
@@ -193,7 +198,7 @@ export default function RegisterPage() {
               {loading ? "Kayıt oluşturuluyor…" : "Ücretsiz Kayıt Ol"}
             </button>
 
-            <p className="text-xs text-center text-gray-400">
+            <p className="text-xs text-center text-gray-500">
               Kayıt olarak{" "}
               <a href="#" className="underline hover:text-gray-600">Kullanım Koşulları</a>
               &apos;nı ve{" "}
@@ -203,7 +208,7 @@ export default function RegisterPage() {
           </form>
         </div>
 
-        <p className="text-center text-xs text-gray-400 mt-6">
+        <p className="text-center text-xs text-gray-500 mt-6">
           © {new Date().getFullYear()} KGNPOS. Tüm hakları saklıdır.
         </p>
       </div>
