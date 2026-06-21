@@ -129,9 +129,17 @@ export default async function LandingPage() {
       {/* ── Navbar ─────────────────────────────────────────────────────────── */}
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100 shadow-sm relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center h-16 gap-8">
+          <div className="flex items-center justify-between h-16">
 
-            <Link href="/" className="flex items-center flex-shrink-0">
+            <nav className="hidden md:flex items-center gap-7 flex-shrink-0">
+              {navLinks.map((l) => (
+                <a key={l.href} href={l.href} className="text-sm font-medium text-gray-600 hover:text-[#E85D04] transition-colors">
+                  {l.label}
+                </a>
+              ))}
+            </nav>
+
+            <Link href="/" className="absolute left-1/2 -translate-x-1/2 flex items-center">
               <div style={{position:'relative',display:'inline-block',paddingTop:10}}>
                 <svg style={{position:'absolute',top:0,right:-5,display:'block'}} width="20" height="11" viewBox="1 4 21 16" fill="none" stroke="#E85D04" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/>
@@ -143,21 +151,14 @@ export default async function LandingPage() {
               </div>
             </Link>
 
-            <nav className="hidden md:flex items-center gap-7 flex-1 justify-center">
-              {navLinks.map((l) => (
-                <a key={l.href} href={l.href} className="text-sm font-medium text-gray-600 hover:text-[#E85D04] transition-colors">
-                  {l.label}
-                </a>
-              ))}
-            </nav>
-
-            <div className="hidden md:block ml-auto flex-shrink-0">
-              <Link href="/isletme" className="text-sm font-semibold text-white px-5 py-2.5 rounded-lg transition-colors bg-[#E85D04] hover:bg-[#C44D00]">
-                Giriş Yap
-              </Link>
+            <div className="flex items-center gap-4 flex-shrink-0">
+              <div className="hidden md:block">
+                <Link href="/isletme" className="text-sm font-semibold text-white px-5 py-2.5 rounded-lg transition-colors bg-[#E85D04] hover:bg-[#C44D00]">
+                  Giriş Yap
+                </Link>
+              </div>
+              <MobileNav links={navLinks} />
             </div>
-
-            <MobileNav links={navLinks} />
 
           </div>
         </div>
