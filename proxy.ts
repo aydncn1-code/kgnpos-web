@@ -1,9 +1,7 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-// Bu uygulama tamamen client-side — hiç "use server" kullanılmıyor.
-// Next-Action header'lı istekler ya bot probe'u ya da eski build önbelleğidir.
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   if (request.headers.has('next-action')) {
     return new NextResponse(null, { status: 400 });
   }
